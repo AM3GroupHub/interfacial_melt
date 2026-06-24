@@ -48,23 +48,3 @@ trajectory (`last_frac: 0.5`).
   a weighted OZ Lorentzian `S_cc(k)=a/(1+b k²)`, `|k|<0.8 Å⁻¹` (M2). `S_cc(0)=a`.
 - **KBI route:** windowed sinc-Fourier transform of the partial RDFs (Krüger–Vlugt window);
   at `k=0` it is exactly the static Kirkwood–Buff integral (no extrapolation).
-
-## Validation
-
-The implementation matches SM §I.A/§I.B. The KBI route's `k=0` value is bit-for-bit equal to
-the Krüger–Vlugt integral of the same RDF (machine precision), and the two routes agree in the
-well-sampled band `0.5 < |k| < 2.5 Å⁻¹` — they bracket the instability and we report demixing
-where they agree on the sign of the curvature.
-
-## Dependencies
-
-`numpy scipy matplotlib pyyaml` (the plot scripts need only `numpy matplotlib`).
-
-## Citation
-
-Zhang, Chen, Li, Zhong, *Interfacial-melt stability as a thermodynamic prerequisite for
-solid-state synthesis*, arXiv:2606.22885.
-
-## License
-
-TBD (to be set by the project PI).
