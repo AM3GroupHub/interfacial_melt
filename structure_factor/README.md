@@ -1,0 +1,69 @@
+# structure_factor — concentration–concentration structure factor of Fe–B melts
+
+Our contribution to *Interfacial-melt stability as a thermodynamic prerequisite for
+solid-state synthesis* (arXiv:2606.22885). Computes the Bhatia–Thornton structure factor
+`S_cc(k)`, the thermodynamic factor `Γ = x_Fe x_B / S_cc(0)`, and the excess free-energy
+curvature `(1/k_BT) ∂²g_ex/∂x² = (Γ−1)/(x_Fe x_B)` for liquid Fe–B, along two routes
+(reciprocal-space S(k) and real-space Krüger–Vlugt KBI).
+
+## What this folder reproduces
+
+| paper figure | script | output |
+|---|---|---|
+| **Fig. 3** `S_cc(k)`, 1500 K | `plot_fig3_scc_k.py` | `figures/fig3_scc_k_T1500.pdf` |
+| **Fig. 1(c,d) bottom** `(1/k_BT)∂²g_ex/∂x²` | `plot_fig1_gex_curvature.py` | `figures/fig1_gex_curvature.pdf` |
+| **SM** per-composition `S_cc(k)` | `plot_sm_state_diagnostics.py` | `figures/state_diagnostics/sm_state_diagnostics_T{T}_P{P}.pdf` |
+| **SM** KBI cross-check 2×2 | `plot_sm_kbi_2x2.py` | `figures/sm_kbi_scc_2x2_T1500.pdf` |
+
+It does **not** produce the Fig. 1 top energy panels, Fig. 2 (CN=6 / PV), the MD generation,
+or the MACE potential — those are other parts of the project.
+
+## Pipeline (three stages)
+
+```
+1_compute_scc_reciprocal.py   dumps  → results/ caches   # needs data_root (raw dumps; internal)
+2_compute_scc_kbi.py
+3_export_csv.py               caches → data/csv/*.csv     # the published plotted data
+plot_*.py                     data/csv → figures/         # portable: CSV + matplotlib only
+```
+
+The raw MD dumps are not distributed; **every CSV/figure reproduces from the shipped
+`results/` caches without them.** To regenerate the figures:
+
+    python 3_export_csv.py          # caches → data/csv/
+    python plot_fig3_scc_k.py
+    python plot_fig1_gex_curvature.py
+    python plot_sm_state_diagnostics.py
+    python plot_sm_kbi_2x2.py
+
+To recompute caches from scratch you also need the dumps: set `data_root` in `config.yaml`
+to your dump tree and run `1_`/`2_`. All steps use the last half of each trajectory
+(`last_frac: 0.5` in `config.yaml`).
+
+## Method (see SM §I.A / §I.B)
+
+- **Reciprocal route:** partial `S_αβ(k)` from MD positions at commensurate shells
+  `k = 2πn/L` (scaled coords, NPT-safe), projected to `S_cc(k)`, extrapolated to `k=0` with
+  a weighted OZ Lorentzian `S_cc(k)=a/(1+b k²)`, `|k|<0.8 Å⁻¹` (M2). `S_cc(0)=a`.
+- **KBI route:** windowed sinc-Fourier transform of the partial RDFs (Krüger–Vlugt window);
+  at `k=0` it is exactly the static Kirkwood–Buff integral (no extrapolation).
+
+## Validation
+
+The implementation matches SM §I.A/§I.B. The KBI route's `k=0` value is bit-for-bit equal to
+the Krüger–Vlugt integral of the same RDF (machine precision), and the two routes agree in the
+well-sampled band `0.5 < |k| < 2.5 Å⁻¹` — they bracket the instability and we report demixing
+where they agree on the sign of the curvature.
+
+## Dependencies
+
+`numpy scipy matplotlib pyyaml` (the plot scripts need only `numpy matplotlib`).
+
+## Citation
+
+Zhang, Chen, Li, Zhong, *Interfacial-melt stability as a thermodynamic prerequisite for
+solid-state synthesis*, arXiv:2606.22885.
+
+## License
+
+TBD (to be set by the project PI).
