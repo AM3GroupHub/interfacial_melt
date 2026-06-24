@@ -27,6 +27,22 @@ or the MACE potential — those are other parts of the project.
 plot_*.py                     data/csv → figures/         # portable: CSV + matplotlib only
 ```
 
+**The scripts:**
+
+- **`1_compute_scc_reciprocal.py`** — *reciprocal-space route.* Reads the MD trajectories and
+  computes the partial structure factors `S_αβ(k)` directly from the atomic positions at the
+  commensurate wavevectors `k = 2πn/L`, shell-averages and projects them to the
+  concentration–concentration `S_cc(k)`, and caches one `.npz` per `(T, P)` in
+  `results/scc_reciprocal/`.
+- **`2_compute_scc_kbi.py`** — *real-space KBI route (independent cross-check).* Computes the
+  partial radial distribution functions `g_αβ(r)` (cached in `results/rdfs/`) and
+  Fourier-transforms them with a Krüger–Vlugt finite-size window to get `S_cc(k)`, reaching
+  `k = 0` analytically (the static Kirkwood–Buff value, no extrapolation); caches to
+  `results/scc_kbi/`.
+- **`3_export_csv.py`** — *data export.* Reads the cached `S_cc(k)` from both routes, runs the
+  M2 OZ-Lorentzian fit to obtain `S_cc(0)` and `Γ = x_Fe x_B / S_cc(0)`, and writes the
+  per-figure data tables to `data/csv/` — the published data behind each figure.
+
 This repo ships **code + data (the CSV tables)**; rendered figures are not included — they
 regenerate from `data/csv/`. The plot scripts read **only** the CSVs (no `results/` caches,
 no dumps, no `src/` — just numpy + matplotlib):
