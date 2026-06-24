@@ -1,0 +1,12 @@
+# Single source of truth. Scripts read these as defaults; CLI flags override.
+last_frac: 0.5
+temperatures: [1200, 1500, 1800, 2000, 2300, 2600]
+pressures: [0, 10]
+reciprocal: {stride: 6,  max_frames: 2500, n_shells: 4}
+kbi:        {stride: 10, dr: 0.02, kmax: 3.0, nk: 150}
+fit:        {kmax_fit: 0.8}
+
+# Location of the raw MD dump tree (set this locally to recompute caches from
+# scratch; only 1_/2_ use it). Left empty in the repo — no absolute paths committed.
+data_root: ""
+state_index: data/state_index.json
