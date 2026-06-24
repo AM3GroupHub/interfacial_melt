@@ -14,30 +14,71 @@ additional thermodynamic condition for solid-state, interfacial-melt-mediated ro
 spinodal decomposition**. We demonstrate this for the Fe–B system — where thermodynamically
 stable FeB₄ is reported under high-pressure but not low-pressure synthesis — using melt-quench
 molecular dynamics driven by a fine-tuned machine-learning interatomic potential. At ambient
-pressure the B-rich interfacial melt near FeB₄ develops a concave free-energy landscape (a
-demixing instability), corroborated by the concentration–concentration structure factor;
-applied pressure restores melt stability, consistent with the experimental synthesis boundary.
+pressure the B-rich melt near FeB₄ develops a concave free-energy landscape (a demixing
+instability); applied pressure restores stability, matching the experimental synthesis boundary.
+
+## The structure-factor descriptor
+
+A homogeneous binary melt is locally stable only where its per-atom free energy `g` is convex
+in composition. That curvature is encoded in the **concentration–concentration structure
+factor** `S_cc(k)` — the spectrum of composition fluctuations, read directly from the MD melt.
+Its `k → 0` limit gives the thermodynamic factor
+
+```
+Γ = x_Fe x_B / S_cc(0),        ∂²g/∂x²|_{T,P} = k_B T / S_cc(0)
+```
+
+so `Γ = 1` is ideal mixing, `Γ > 1` ordering, `0 < Γ < 1` demixing, and `Γ → 0`
+(`S_cc(0) → ∞`) the spinodal. A negative excess curvature
+`(1/k_BT) ∂²g_ex/∂x² = (Γ − 1)/(x_Fe x_B)` therefore flags a demixing tendency — the
+instability that renders the ambient-pressure FeB₄ interfacial melt unsynthesizable. This
+descriptor is computed in [`structure_factor/`](structure_factor/).
 
 ## Repository structure
 
-| folder | contents | paper |
-|---|---|---|
-| [`structure_factor/`](structure_factor/) | Concentration–concentration structure factor `S_cc(k)`, thermodynamic factor `Γ`, and excess free-energy curvature of the Fe–B melt (reciprocal-space + Kirkwood–Buff routes), with the plotted data as CSV. | **Fig. 3**, **Fig. 1(c,d) bottom row**, SM structure-factor figures |
-| _(to be added)_ | Free-energy landscape from melt energetics `H − T(S_vib + S_mix)` and its convex/concave classification. | Fig. 1(c,d) top row |
-| _(to be added)_ | Six-coordinated-B (CN=6) fraction and the `PV` analysis of the B-rich melt. | Fig. 2 |
-| _(to be added)_ | Melt-quench MD workflow and the fine-tuned MACE-MH-1 potential. | Methods / SM |
+```
+interfacial_melt/
+├── structure_factor/                 # S_cc(k), Γ, excess curvature — Fig. 3, Fig. 1(c,d) bottom, SM
+│   ├── 1_compute_scc_reciprocal.py   #   reciprocal-space S(k)  (dumps → cache)
+│   ├── 2_compute_scc_kbi.py          #   real-space KBI route   (dumps → cache)
+│   ├── 3_export_csv.py               #   caches → data/csv/  (published plotted data)
+│   ├── plot_fig3_scc_k.py            #   the four plot scripts (CSV → figure)
+│   ├── plot_fig1_gex_curvature.py
+│   ├── plot_sm_state_diagnostics.py
+│   ├── plot_sm_kbi_2x2.py
+│   ├── src/                          #   shared library (vendored numerics core)
+│   ├── data/{state_index.json, csv/} #   state list + per-figure CSV data tables
+│   ├── results/                      #   cached structure factors (npz)
+│   ├── config.yaml   README.md
+│
+├── [TBD]/                            # [TBD — Zihan Zhang] energy landscape H−T(S_vib+S_mix),
+│                                     #   convex/concave classification — Fig. 1(c,d) top
+├── [TBD]/                            # [TBD — Zihan Zhang] CN=6 B fraction + PV analysis — Fig. 2
+├── [TBD]/                            # [TBD — Zihan Zhang] melt-quench MD + MACE-MH-1 potential
+│
+└── README.md
+```
 
-> Each subfolder is self-contained and has its own README. `structure_factor/` is contributed
-> by Mengyi Chen & Peichen Zhong; the remaining components are added by the respective authors.
+### Components
+
+| component | folder | author | paper |
+|---|---|---|---|
+| Structure-factor melt stability (`S_cc`, `Γ`, curvature) | [`structure_factor/`](structure_factor/) | Mengyi Chen, Peichen Zhong | **Fig. 3**, **Fig. 1(c,d) bottom**, SM |
+| Energy-landscape free-energy curvature | `[TBD]` | Zihan Zhang | Fig. 1(c,d) top |
+| Six-coordinated-B (CN=6) fraction + `PV` analysis | `[TBD]` | Zihan Zhang | Fig. 2 |
+| Melt-quench MD workflow + MACE-MH-1 potential | `[TBD]` | Zihan Zhang | Methods / SM |
+
+> Each subfolder is self-contained with its own README.
 
 ## Requirements
 
 Python 3.11+ with `numpy`, `scipy`, `matplotlib`, `pyyaml`. Per-component requirements are in
-each subfolder's README (e.g. `structure_factor/` plot scripts need only `numpy` + `matplotlib`).
+each subfolder's README (e.g. `structure_factor/`'s plot scripts need only `numpy` + `matplotlib`).
 
 ## Reproducing the figures
 
-See each subfolder. For the structure-factor figures (Fig. 3, Fig. 1 c,d bottom, SM):
+For the structure-factor figures (Fig. 3, Fig. 1 c,d bottom, SM) — these read the shipped
+`data/csv/` tables, no raw MD trajectories needed:
 
 ```bash
 cd structure_factor
@@ -47,7 +88,7 @@ python plot_sm_state_diagnostics.py
 python plot_sm_kbi_2x2.py
 ```
 
-(These read the shipped `data/csv/` tables — no raw MD trajectories needed.)
+For the other components, see their subfolder READMEs (`[TBD]`).
 
 ## Citation
 
@@ -71,4 +112,4 @@ National University of Singapore.
 
 ## License
 
-**TBD** — to be set by the project PI.
+**[TBD]** — to be set by the project PI.
