@@ -14,10 +14,7 @@ Code and data for the paper:
 ## The structure-factor descriptor
 
 We diagnose melt stability from the **concentration–concentration structure factor** `S_cc(k)`
-of the MD melt: its `k → 0` limit gives the thermodynamic factor `Γ = x_Fe x_B / S_cc(0)`, and a
-demixing tendency (`Γ < 1`, diverging toward the spinodal as `S_cc(0) → ∞`) is what renders the
-ambient-pressure FeB₄ melt unsynthesizable. Computed in
-[`structure_factor/`](structure_factor/) — see its README for the method and figures.
+of the MD melt, see its README for the method and figures.
 
 
 ## Reproducing the figures
