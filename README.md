@@ -17,7 +17,7 @@ We diagnose melt stability from the **concentration–concentration structure fa
 of the MD melt, see its README for the method and figures.
 
 
-## Reproducing the figures
+### Reproducing the figures
 
 For the structure-factor figures (Fig. 3, Fig. 1 c,d bottom, SM) — these read the shipped
 `data/csv/` tables, no raw MD trajectories needed:
