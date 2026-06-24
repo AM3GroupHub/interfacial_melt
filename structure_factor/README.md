@@ -27,18 +27,19 @@ or the MACE potential — those are other parts of the project.
 plot_*.py                     data/csv → figures/         # portable: CSV + matplotlib only
 ```
 
-The raw MD dumps are not distributed; **every CSV/figure reproduces from the shipped
-`results/` caches without them.** To regenerate the figures:
+This repo ships **code + data (the CSV tables)**; rendered figures are not included — they
+regenerate from `data/csv/`. The plot scripts read **only** the CSVs (no `results/` caches,
+no dumps, no `src/` — just numpy + matplotlib):
 
-    python 3_export_csv.py          # caches → data/csv/
     python plot_fig3_scc_k.py
     python plot_fig1_gex_curvature.py
     python plot_sm_state_diagnostics.py
     python plot_sm_kbi_2x2.py
 
-To recompute caches from scratch you also need the dumps: set `data_root` in `config.yaml`
-to your dump tree and run `1_`/`2_`. All steps use the last half of each trajectory
-(`last_frac: 0.5` in `config.yaml`).
+The raw MD dumps are not distributed. To rebuild the CSVs from the cached structure factors,
+run `python 3_export_csv.py` (reads `results/`); recomputing the caches from scratch needs the
+dumps (`1_`/`2_`, with `data_root` set in `config.yaml`). All steps use the last half of each
+trajectory (`last_frac: 0.5`).
 
 ## Method (see SM §I.A / §I.B)
 
