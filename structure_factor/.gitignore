@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# run logs (not part of the deliverable)
+*.log
+
+# OS
+.DS_Store
