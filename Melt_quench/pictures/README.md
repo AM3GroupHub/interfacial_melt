@@ -16,10 +16,6 @@ pv_composition_10gpa_liquid: Figure 33 in SI.
 
 pv_potential_overlay_10gpa_1500k_rightonly: Figure 2(c) in manuscript.
 
-rdf_by_composition_0gpa: Figure 15--25 in SI.
-
-rdf_by_composition_10gpa: Figure 15--25 in SI.
-
 sixfold_fraction_energy_overlay_0gpa: Figure 28--32 in SI.
 
 sixfold_fraction_energy_overlay_1500k: Figure 26 in SI.
