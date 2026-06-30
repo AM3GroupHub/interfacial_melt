@@ -1,0 +1,14 @@
+#!/bin/bash
+#PBS -N MACE
+#PBS -l select=1:ncpus=16:ompthreads=16:ngpus=1:mem=220gb
+#PBS -l walltime=24:00:00
+#PBS -P 11001786
+#PBS -P personal-zhongpc
+#PBS -q normal
+
+source activate mace
+module load cuda/12.6.0
+module load openmpi/5.0.8-gcc11-cu12 intel/2022.1.0 mkl/2022.1.0
+cd $PBS_O_WORKDIR
+
+python cal_MQ.py  > MACE.LOG
