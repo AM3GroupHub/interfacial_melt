@@ -5,8 +5,14 @@ Code and data for the paper:
 > **Interfacial-melt stability as a thermodynamic prerequisite for solid-state synthesis**
 > Zihan Zhang, Mengyi Chen, Qianxiao Li, Peichen Zhong — arXiv:[2606.22885](https://arxiv.org/abs/2606.22885) (2026).
 
+## Subfolders for MD simulations
 
-## [TBD]
+- `Melt_quench/`: melt-quench molecular dynamics workflow, post-processing scripts, and figure packages
+- `MLIP/`: machine-learned interatomic potential training, testing, and comparison plotting
+- `Structure_Search/`: AIRSS-based structure search workflow with MACE relaxation
+- `snapshot/`: VESTA snapshot files used for structure visualization in the manuscript and SI
+
+See the `README.md` inside each subfolder for details.
 
 
 
