@@ -32,29 +32,6 @@ The `train/` folder does not currently contain a Python training launcher. Inste
 - `MatPES-R2SCAN-FeB.xyz`: auxiliary / pretraining reference set
 - `mace-mh-1.model`: base foundation model
 
-### Key training outputs
-
-- `mace-mh-1_finetuned_FeB.model`
-- `mace-mh-1_finetuned_FeB_mixed.model`
-- `mace-mh-1_finetuned_FeB_compiled.model`
-- `checkpoints/`
-- `logs/`
-- `results/`
-
-### Training launch command
-
-From `train/`:
-
-```bash
-qsub job-gpu
-```
-
-The batch script eventually runs:
-
-```bash
-mace_run_train --config finetune.yaml
-```
-
 ## Python scripts
 
 ### `test/test.py`
@@ -71,18 +48,6 @@ Main inputs:
 - `MODEL_PATH` (default: `mace-mh-1_finetuned_FeB_mixed.model`)
 - `XYZ_DIR` (default: current directory)
 - `test.xyz` or other XYZ files in the chosen directory
-
-Main outputs:
-
-- `energy_per_atom_comparison.csv`
-- `forces_comparison.csv`
-- `stress_comparison.csv`
-
-Notes:
-
-- energy is converted to **per-atom** energy before writing
-- force and stress are written as flattened component-wise comparisons
-- the script first tries `cuda`, then falls back to `cpu`
 
 Run from `test/`:
 
