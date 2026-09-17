@@ -11,6 +11,8 @@ Code and data for the paper:
 - `MLIP/`: machine-learned interatomic potential training, testing, and comparison plotting
 - `Structure_Search/`: AIRSS-based structure search workflow with MACE relaxation
 - `snapshot/`: VESTA snapshot files used for structure visualization in the manuscript and SI
+- `two_phase_md/`: FeB(010)/alpha-boron(100) interface structures and an example NPT input for 1440 atoms (288 Fe + 1152 B). Supports the interfacial-melting calculation in main-text Fig. 1(c,d) and the upper panel of SI Fig. S1. |
+- `large_cell_md/`:  A 4320-atom FeB4-composition structure (864 Fe + 3456 B) and an example NPT input. Supports the finite-size validation of the structure-factor analysis at 1500 K, comparing nominal 0 and 10 GPa in SI Fig. S5. |
 
 See the `README.md` inside each subfolder for details.
 
