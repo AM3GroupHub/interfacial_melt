@@ -6,10 +6,10 @@ In these files, atoms labeled `C` denote B atoms with coordination number `CN = 
 
 ## File-to-figure mapping
 
-- `POSCAR-0-1800_C6.vesta`: Figure 2(b) and Figure 27(c) in the Supporting Information
-- `POSCAR-0-1800-Fe12B85_C6.vesta`: Figure 27(b) in the Supporting Information
-- `POSCAR-10-1800_C6.vesta`: Figure 27(d) in the Supporting Information
-- `POSCAR-1500-0-omat_C6.vesta`: Figure 35 in the Supporting Information
+- `POSCAR-0-1800_C6.vesta`: Figure 3(b) and Figure S30(c) in the Supporting Information
+- `POSCAR-0-1800-Fe12B85_C6.vesta`: Figure S30(b) in the Supporting Information
+- `POSCAR-10-1800_C6.vesta`: Figure S30(d) in the Supporting Information
+- `POSCAR-1500-0-omat_C6.vesta`: Figure S36 in the Supporting Information
 
 ## Usage
 
