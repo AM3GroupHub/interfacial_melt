@@ -1,22 +1,37 @@
 # Figure 4
 
-Concentration structure factors at 1500 K for `x_B = 0.6, 0.7, 0.8, 0.9`, comparing 0 and 10 GPa. The original PDF is `reference.pdf`; historical `fig3` filenames are retained.
+Cr-B liquid free energies at 0 GPa for 1500 K (left) and 1800 K (right). The horizontal coordinate is the B atomic fraction in `Cr_(1-x)B_x`. The dashed line marks the CrB4 composition (`x_B = 0.8`).
 
-- `plot_fig3_scc_k_with_fit_uncertainty.py`: main plotting script.
-- `plot_github_scc_last0p5_3x4.py`: weighted Ornstein-Zernike fitting and bootstrap routines.
-- `data/fig3_scc_k.csv`: plotted structure-factor points.
-- `data/last0p5_records_flat.csv`: structure-factor values and weights for fitting, from the last 50% of each trajectory.
-- `data/last0p5_weighted_oz_bootstrap_summary.csv`: original 44-state fit summary for reference.
+## Method summary
 
-Run in a Python 3.9 environment from this folder:
+For each of 11 liquid compositions, the script normalizes the calculated free energy against elemental Cr and B endpoints. It then adds the ideal configurational contribution
+
+`k_B T [x ln(x) + (1-x) ln(1-x)]`
+
+and fits all compositions with a fifth-order polynomial. Blue and red curve segments show the convex and concave regions separated at the fitted inflection point nearest `x_B = 0.6`. No error bars are plotted.
+
+The page width, panel width and height, and inter-panel spacing are fixed explicitly so this main-text figure matches the corresponding Fe-B panel geometry. The PDF page is 239.494 x 135.341 pt; each plotting axis is 89.951 x 99.347 pt, with an 11.920 pt horizontal gap.
+
+## Contents
+
+- `plot_free_energy_0gpa_1500k_1800k_with_config_entropy.py`: self-contained normalization and plotting script.
+- `data/source_crb/`: 11 alloy `_G.txt` tables plus the elemental Cr and B endpoint tables.
+- `data/normalized_energy_CrB_0GPa_1500_1800.csv`: preserved 22-row normalized table for traceability.
+- `output/`: regenerated normalized CSV and publication-ready PDF/PNG.
+- `reference.pdf`: the accepted main-text rendering.
+- `reference/plot_free_energy_0gpa_1500k_1800k_with_config_entropy.original.py`: unadapted source script from the working directory.
+
+## Reproduce
+
+Use Python 3.9 or newer from this folder:
 
 ```bash
 python -m pip install -r requirements.txt
-python plot_fig3_scc_k_with_fit_uncertainty.py
+python plot_free_energy_0gpa_1500k_1800k_with_config_entropy.py
 ```
 
-The script refits eight displayed states and writes PDF/PNG files to `output/`. It uses `k < 0.8 angstrom^-1`, nonnegative OZ parameters, weights equal to the square root of shell multiplicity, and 500 residual-bootstrap replicates for pointwise 95% fit confidence bands. Seed `20260824` and the original 44-state seed ordering are preserved.
+The script reads only local files and writes the normalized CSV, PDF, and PNG to `output/`. A successful run reports 22 records.
 
-Only paths and CSV-loading setup were adapted; fitting and plotting methods are unchanged. The packaged CSVs are sufficient; no NPZ files or MD trajectories are required.
+Only data/output paths and package export behavior were adapted. The thermodynamic normalization, configurational-entropy expression, fit, colors, annotations, and final fixed layout are unchanged from the accepted source figure.
 
-Sources: `response/S_test/` scripts, `github_interfacial_melt/structure_factor/data/csv/fig3_scc_k.csv`, and `github_scc_last0p5_pressure_compare/` data/reference PDF.
+Source: `final/Cr-B-2/`. The curated raw tables are identical to those retained for `FigS37/data/source_crb/`.

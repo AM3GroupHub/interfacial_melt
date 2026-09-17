@@ -17,7 +17,8 @@ Each figure package will contain the plotting/analysis scripts, their required s
 - [Fig1](Fig1/README.md): a/b schematic notes, c 800 ps structure image, d MSD source data and scripts. Large MD trajectories are not included.
 - [Fig2](Fig2/README.md): a/b free-energy and excess-curvature plots at 0/10 GPa, with input CSVs and plotting scripts.
 - [Fig3](Fig3/README.md): a sixfold-B/energy overlay, b labeled structure and screenshot, c potential/PV comparison; includes source data and scripts.
-- [Fig4](Fig4/README.md): concentration structure factors at 1500 K, with weighted OZ fits, bootstrap confidence bands, and source CSVs.
+- [Fig4](Fig4/README.md): Cr-B free energies at 0 GPa and 1500/1800 K, including ideal configurational entropy and fifth-order convex/concave fits.
+- [Fig5](Fig5/README.md): concentration structure factors at 1500 K, with weighted OZ fits, bootstrap confidence bands, and source CSVs.
 - [FigS1](FigS1/README.md): three upper-panel trajectory snapshots; trajectories omitted, lower panel is a conceptual diagram.
 - [FigS2](FigS2/README.md): energy and force parity plots, with comparison CSVs and a shared plotting script.
 - [FigS3](FigS3/README.md): 1500 K structure factors for 11 compositions at 0/10 GPa, with source data, weighted OZ fits, and bootstrap confidence bands.

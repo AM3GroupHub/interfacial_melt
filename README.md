@@ -7,7 +7,7 @@ Code and data for the paper:
 
 ## Data and scripts
 
-- [figure_reproduction/](figure_reproduction/README.md): source data, plotting scripts, and structure files for main-text Figures 1-4 and Supporting Figures S1-S38. Figure S38 provides a literature citation.
+- [figure_reproduction/](figure_reproduction/README.md): source data, plotting scripts, and structure files for main-text Figures 1-5 and Supporting Figures S1-S38. Figure S38 provides a literature citation.
 - [Cr-B-input/](Cr-B-input/README.md): Cr-B MD structures and input-generation scripts, following the Fe-B melt-quench workflow.
 - [Melt_quench/](Melt_quench/README.md): Fe-B melt-quench MD and post-processing.
 - [MLIP/](MLIP/README.md): potential-model training, testing, and usage.

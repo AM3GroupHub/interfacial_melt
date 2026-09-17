@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Reproduce manuscript Fig. 4 with weighted OZ fits and 95% bootstrap bands."""
+"""Reproduce manuscript Fig. 5 with weighted OZ fits and 95% bootstrap bands."""
 from __future__ import annotations
 
 import csv
