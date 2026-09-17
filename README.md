@@ -5,41 +5,23 @@ Code and data for the paper:
 > **Interfacial-melt stability as a thermodynamic prerequisite for solid-state synthesis**
 > Zihan Zhang, Mengyi Chen, Qianxiao Li, Peichen Zhong — arXiv:[2606.22885](https://arxiv.org/abs/2606.22885) (2026).
 
-## Subfolders for MD simulations
+## Data and scripts
 
-- `Melt_quench/`: melt-quench molecular dynamics workflow, post-processing scripts, and figure packages
-- `MLIP/`: machine-learned interatomic potential training, testing, and comparison plotting
-- `Structure_Search/`: AIRSS-based structure search workflow with MACE relaxation
-- `snapshot/`: VESTA snapshot files used for structure visualization in the manuscript and SI
-- `two_phase_md/`: FeB(010)/alpha-boron(100) interface structures and an example NPT input for 1440 atoms (288 Fe + 1152 B). Supports the interfacial-melting calculation in main-text Fig. 1(c,d) and the upper panel of SI Fig. S1. |
-- `large_cell_md/`:  A 4320-atom FeB4-composition structure (864 Fe + 3456 B) and an example NPT input. Supports the finite-size validation of the structure-factor analysis at 1500 K, comparing nominal 0 and 10 GPa in SI Fig. S5. |
+- [figure_reproduction/](figure_reproduction/README.md): source data, plotting scripts, and structure files for main-text Figures 1-4 and Supporting Figures S1-S38. Figure S38 provides a literature citation.
+- [Cr-B-input/](Cr-B-input/README.md): Cr-B MD structures and input-generation scripts, following the Fe-B melt-quench workflow.
+- [Melt_quench/](Melt_quench/README.md): Fe-B melt-quench MD and post-processing.
+- [MLIP/](MLIP/README.md): potential-model training, testing, and usage.
+- [Structure_Search/](Structure_Search/README.md): AIRSS structure search and MACE relaxation.
+- [snapshot/](snapshot/README.md): structural visualizations.
+- [two_phase_md/](two_phase_md/README.md): two-phase interface MD inputs.
+- [large_cell_md/](large_cell_md/README.md): 4320-atom MD inputs for finite-size checks.
+- [structure_factor/](structure_factor/README.md): concentration-concentration structure-factor analysis, `S_cc(k)`.
 
-See the `README.md` inside each subfolder for details.
+## Reproducing figures
 
+Start with [figure_reproduction/README.md](figure_reproduction/README.md), then follow the short README in each figure folder for dependencies and commands. Related figures share a folder where appropriate. Large MD trajectories and potential files are not duplicated in the figure packages.
 
-
-
-## The structure-factor descriptor
-
-We diagnose melt stability from the **concentration–concentration structure factor** `S_cc(k)`
-of the MD melt, see its README for the method and figures.
-
-
-### Reproducing the figures
-
-For the structure-factor figures (Fig. 3, Fig. 1 c,d bottom, SM) — these read the shipped
-`data/csv/` tables, no raw MD trajectories needed:
-
-```bash
-cd structure_factor
-python plot_fig3_scc_k.py
-python plot_fig1_gex_curvature.py
-python plot_sm_state_diagnostics.py
-python plot_sm_kbi_2x2.py
-```
-
-For the other components, see their subfolder READMEs (`[TBD]`).
-
+For MD calculations, configure the model path, LAMMPS executable, and run settings as described in the corresponding input-folder README.
 
 ## License
 
