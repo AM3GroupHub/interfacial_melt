@@ -71,10 +71,10 @@ Then run with your LAMMPS executable:
 lmp -in in.lammps -log log.lammps
 ```
 
-The expected generated outputs are `log.lammps`, `SUPERCELL.dump`, and `final.data`; they are not supplied in this directory. `final.data` is written after the full 1000 ps run. To select the configuration corresponding to Fig. 1(c), use the trajectory frame whose `ITEM: TIMESTEP` is `800000`.
+The final configuration from the segmented MD continuation is provided in `final.data`; its header timestep refers to the last run segment, not the cumulative simulation time. To select the configuration corresponding to Fig. 1(c), use the trajectory frame whose `ITEM: TIMESTEP` is `800000`.
 
 For the additional SI state points, prepare separate working directories and input copies. A 10 GPa target corresponds to `iso 100000 100000 1.0` in `metal` units. For 1800 K, change both the initial velocity temperature and the two `fix npt` temperature targets to 1800 K. These are adaptations of the example; independently archived input files and run outputs for those state points are not present here.
 
 ## Reproducibility scope
 
-This folder packages the starting configuration and an MD input example, with potential training and model files organized separately under `../MLIP/`. It does not contain the interface construction/relaxation scripts, production trajectories or logs, final snapshots, interface/bulk atom selections, MSD-analysis scripts, or figure-rendering scripts used for the manuscript. Full reproduction of the published snapshots and MSD curves also requires those analysis details and the software versions. The dump records unwrapped coordinates and atom IDs for subsequent displacement analysis, but the manuscript's region selections cannot be recovered from this input alone.
+This folder packages the starting configuration and an MD input example, with potential training and model files organized separately under `../MLIP/`. It does not contain the interface construction/relaxation scripts, production trajectories or logs, interface/bulk atom selections, MSD-analysis scripts, or figure-rendering scripts used for the manuscript. Full reproduction of the published snapshots and MSD curves also requires those analysis details and the software versions. The dump records unwrapped coordinates and atom IDs for subsequent displacement analysis, but the manuscript's region selections cannot be recovered from this input alone.

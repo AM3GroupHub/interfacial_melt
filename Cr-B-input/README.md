@@ -22,6 +22,6 @@ python cal_MQ.py
 
 Alternatively, submit `qsub job_mace.pbs`. The timestep is 1 fs; each configured NPT stage runs 150,000 steps (150 ps) at 1 bar, representing nominal 0 GPa. Temperature lists differ between folders.
 
-**Continuation setup:** all alloy folders currently have `T1 = []` and expect an existing `<structure>/final.data` before the first NPT stage; this file is not supplied. Provide the appropriate equilibrated configuration, or configure an initial NVT stage for a fresh run. The elemental `B/` and `Cr/` folders include a 900 K NVT initialization. `Time3 = []` disables the final relaxation loop.
+**Continuation setup:** all alloy folders currently have `T1 = []` and expect an existing `<structure>/final.data` before the first NPT stage. Provide the appropriate equilibrated configuration, or configure an initial NVT stage for a fresh run. The elemental `B/` and `Cr/` folders include a 900 K NVT initialization. `Time3 = []` disables the final relaxation loop.
 
-See [Melt_quench](../Melt_quench/README.md) for the shared analysis workflow, adapting any Fe-specific settings to Cr. No simulation outputs or large trajectories are included here.
+See [Melt_quench](../Melt_quench/README.md) for the shared analysis workflow, adapting any Fe-specific settings to Cr. Final MD configurations are provided as `<composition>/final.data` for all 13 compositions; full trajectories are not included.

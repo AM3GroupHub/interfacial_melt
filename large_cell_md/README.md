@@ -68,7 +68,7 @@ Use only one of these `fix` lines in each input. Exact zero pressure can instead
 lmp -in in.lammps -log log.lammps
 ```
 
-This generates `log.lammps`, `SUPERCELL.dump`, and `final.data`. These outputs are not currently included in this folder.
+This generates `log.lammps`, `SUPERCELL.dump`, and `final.data`. Final configurations at 0 and 10 GPa are supplied as `final-0GPa.data` and `final-10GPa.data`, respectively; logs and full trajectories are not included.
 
 ## Structure-factor analysis and remaining reproducibility files
 

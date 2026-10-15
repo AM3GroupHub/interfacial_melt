@@ -2,6 +2,8 @@
 
 This directory contains the full melt-quench molecular dynamics workflow used for the Fe-B liquid and glass-forming datasets, from structure preparation to post-processing and figure reproduction.
 
+Final MD configurations are provided as `MD/<composition>/final.data` for all 13 compositions.
+
 ## Directory layout
 
 ```text
