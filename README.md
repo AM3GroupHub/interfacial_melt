@@ -22,7 +22,3 @@ Code and data for the paper:
 Start with [figure_reproduction/README.md](figure_reproduction/README.md), then follow the short README in each figure folder for dependencies and commands. Related figures share a folder where appropriate. Large MD trajectories and potential files are not duplicated in the figure packages.
 
 For MD calculations, configure the model path, LAMMPS executable, and run settings as described in the corresponding input-folder README.
-
-## License
-
-**[TBD]** 
