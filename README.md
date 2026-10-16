@@ -1,8 +1,7 @@
-# Interfacial-melt stability as a thermodynamic prerequisite for solid-state synthesis
-
+# Interfacial melting as a thermodynamic indicator of solid-state synthesizability
 Code and data for the paper:
 
-> **Interfacial-melt stability as a thermodynamic prerequisite for solid-state synthesis**
+> **Interfacial melting as a thermodynamic indicator of solid-state synthesizability**
 > Zihan Zhang, Mengyi Chen, Qianxiao Li, Peichen Zhong — arXiv:[2606.22885](https://arxiv.org/abs/2606.22885) (2026).
 
 ## Data and scripts
